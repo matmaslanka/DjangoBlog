@@ -1,0 +1,36 @@
+{% extends 'blog_app/base/base.html' %}
+{% load static %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block style_css %}
+    <link rel="stylesheet" href="{% static 'blog_app/styles/form.css' %}">
+{% endblock %}
+
+{% block main_heading %}
+    <h1>Login</h1>
+{% endblock %}
+{% block header_content %}
+    <p>You must be logged-in to add new entry! Please insert your login data below!</p>
+{% endblock %}
+
+
+{% block content %}
+<section class="register_form" style="padding-top: 1px; padding-bottom: 1px;">
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            {{ login_form.as_p }}
+        </div>
+        <button class="submit_btn">Submit</button>
+    </form>
+</section>
+
+<section class="register_form">
+    <div>
+        Don't you have an account? - <a href="{% url 'register' %}" class="submit_btn_a"> Sign up!</a>
+    </div>
+</section>
+{% endblock %}

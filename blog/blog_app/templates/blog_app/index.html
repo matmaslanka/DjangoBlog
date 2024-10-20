@@ -1,0 +1,32 @@
+{% extends 'blog_app/base/base.html' %}
+{% load static %}
+
+{% block title %}
+Blog App
+{% endblock %}
+
+{% block style_css %}
+    <link rel="stylesheet" href="{% static 'blog_app/styles/entries.css' %}">
+    <link rel="stylesheet" href="{% static 'blog_app/styles/form.css' %}">
+{% endblock %}
+
+{% block main_heading %}
+    <h1>NotBug Blog App</h1>
+{% endblock %}
+{% block header_content %}
+    <p>I hope you find something interesting for you!</p>
+{% endblock %}
+
+{% block content %}
+{% if entries %}
+<ol>
+    {% for entry in entries %}
+        {% include 'blog_app/includes/entries-item.html' with title=entry.title content=entry.content %}
+    {% endfor %}
+</ol>
+{% else %}
+    <div class="entry-item">
+        <p>Not entry yet! <a href="{% url 'add-entry'%}" class="submit_btn_a">Add first entry!</a> </p>
+    </div>
+{% endif %}
+{% endblock %}

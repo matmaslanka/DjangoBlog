@@ -1,0 +1,13 @@
+<li>
+    <section class="entry-item" style="padding-bottom: 24px;">
+        <div>
+            <p style="font-size: 70%; margin: 1px;"> {{entry.user}} </p>
+            <h2 style="margin-top: 5px; margin-bottom: 5px;"> {{entry.title}} </h2>
+            <h3 style="margin-top: 5px;"> {{entry.content}} </h3>
+
+        </div>
+        {% if user == entry.user %}
+            <a href="{% url 'update_entry' entry.slug %}" class="submit_btn_a">Update</a>
+        {% endif %}
+    </section>
+</li>

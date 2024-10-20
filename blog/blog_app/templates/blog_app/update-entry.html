@@ -1,0 +1,30 @@
+{% extends 'blog_app/base/base.html' %}
+{% load static %}
+
+{% block title %}
+Add Entry
+{% endblock %}
+
+{% block style_css %}
+    <link rel="stylesheet" href="{% static 'blog_app/styles/form.css' %}">
+{% endblock %}
+
+{% block main_heading %}
+    <h1>Update Entry</h1>
+{% endblock %}
+
+{% block header_content %}
+    <p>Please update the entry!</p>
+{% endblock %}
+
+{% block content %}
+<section class="register_form">
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="submit_btn" >Save</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'blog_app/base/base.html' %}
+{% load static %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block style_css %}
+    <link rel="stylesheet" href="{% static 'blog_app/styles/form.css' %}">
+{% endblock %}
+
+{% block main_heading %}
+<h1>Register</h1>
+{% endblock %}
+{% block header_content %}
+    <p>Please insert your register data below</p>
+{% endblock %}
+
+{% block content %}
+<section class="register_form" style="padding-top: 1px; padding-bottom: 1px;">
+    <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            {{ form.as_p }}
+        </div>
+        <button class="submit_btn">Submit</button>
+    </form>
+</section>
+{% endblock %}
